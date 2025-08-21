@@ -3,7 +3,7 @@
 Packages
 --------
 
-This section provides an overview of the main ROS 2 packages included in the Doosan Robotics integration stack.  
+This section provides an overview of the main ROS 2 packages included in the Doosan Robotics integration stack.
 Each package serves a distinct role within the architecture, from hardware control to motion planning and simulation.
 
 dsr_bringup2
