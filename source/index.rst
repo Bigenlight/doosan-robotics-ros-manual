@@ -1,4 +1,4 @@
-Doosan Robotics ROS2 documentation
+Doosan Robotics ROS2 Jazzy documentation
 ==============================================
 
 .. image:: tutorials/images/etc/robot_series.png
