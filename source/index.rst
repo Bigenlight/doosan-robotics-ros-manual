@@ -1,4 +1,4 @@
-Doosan Robotics ROS2 documentation
+Doosan Robotics ROS2 Humble documentation
 ==============================================
 
 .. image:: tutorials/images/etc/robot_series.png
