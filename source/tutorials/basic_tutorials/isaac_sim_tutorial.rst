@@ -57,8 +57,7 @@ Workspace Setup and Execution
 This section describes how to set up the required ROS 2 workspace, install the Doosan
 Isaac Sim assets, and run Isaac Sim with Doosan robot models.
 
-1. Create a ROS 2 Workspace and Clone Doosan Packages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**1. Create a ROS 2 Workspace and Clone Doosan Packages**
 
 Create a ROS 2 workspace and clone the Doosan Robotics packages.  
 The **dsr_isaac_sim** package is included inside the
@@ -70,8 +69,8 @@ The **dsr_isaac_sim** package is included inside the
    cd ~/ros2_ws/src
    git clone -b humble https://github.com/DoosanRobotics/doosanrobotics_cumotion_driver
 
-2. Run the Isaac Sim Docker Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**2. Run the Isaac Sim Docker Container**
+
 
 Move to the Isaac Sim launcher directory and run the provided Docker execution script.
 
@@ -88,8 +87,7 @@ Move to the Isaac Sim launcher directory and run the provided Docker execution s
 
 This command launches an interactive shell inside the Isaac Sim Docker container.
 
-3. Launch Doosan Robot in Isaac Sim
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**3. Launch Doosan Robot in Isaac Sim**
 
 Inside the Docker container, run the following command to start Isaac Sim with
 the Doosan robot scene.

@@ -1,7 +1,7 @@
-.. _nvblox_tutorial:
+.. _Real-Time_Obstacle_Avoidance_with_cuMotion(nvblox)_tutorial:
 
-nvblox Tutorial
-=================
+Real-Time Obstacle Avoidance with cuMotion(nvblox) tutorial
+============================================================
 
 Overview
 --------

@@ -159,7 +159,7 @@ Command
 
 .. image::  ../images/cumotion/cumotion_launch1.png
    :alt: cuMotion Launch
-   :width: 800px
+   :width: 100%
    :align: center
 
 
@@ -273,7 +273,7 @@ This demo shows a straightforward target pose update in RViz.
 
 .. image:: ../images/cumotion/cumotion_demo_basic.gif
    :alt: cuMotion Basic Planning Demo
-   :width: 800px
+   :width: 100%
    :align: center
 
 .. raw:: html
@@ -290,7 +290,7 @@ collision-free trajectory.
 
 .. image:: ../images/cumotion/cumotion_demo_obstacle.gif
    :alt: cuMotion Obstacle Avoidance Demo
-   :width: 800px
+   :width: 100%
    :align: center
 
 .. raw:: html
@@ -322,8 +322,7 @@ It is used when both the target **position and orientation** need to be explicit
      max_vel_scale: 0.5, max_acc_scale: 0.4
    }" --once
 
-TargetPose.msg
-^^^^^^^^^^^^^^
+**TargetPose.msg**
 
 This message defines an **absolute target TCP pose**.  
 The orientation can be represented using **either Euler angles or a quaternion**.
@@ -363,8 +362,7 @@ It is used when only the **target joint configuration** is required, without def
      max_acc_scale: 0.4
    }" --once
 
-TargetJoint.msg
-^^^^^^^^^^^^^^^^
+**TargetJoint.msg**
 
 This message represents a **joint-space motion command**, where each joint angle is provided as an array.
 
@@ -392,8 +390,7 @@ It is well-suited for **repetitive motions and initial pose setup**.
      max_acc_scale: 0.6
    }" --once
 
-TargetNamed.msg
-^^^^^^^^^^^^^^^^
+**TargetNamed.msg**
 
 This message sends the **name of a predefined target pose** as a string.
 
@@ -423,8 +420,7 @@ It is mainly used for **fine adjustments (micro adjustments)** in either the TCP
      max_acc_scale: 0.5
    }" --once
 
-TargetRelative.msg
-^^^^^^^^^^^^^^^^^^^
+**TargetRelative.msg**
 
 This message specifies **relative translational (dx, dy, dz) and rotational (drx, dry, drz) increments**
 with respect to the current TCP or base frame.
@@ -455,6 +451,7 @@ with respect to the current TCP or base frame.
 
 Object Attach / Detach
 -----------------------
+
 This node serves as an automatic Pick & Place sequence execution server for the Doosan robot.
 It performs motion execution using the MoveIt 2 + cuMotion motion planning pipeline, 
 and controls object grasping and releasing in simulation through the Isaac ROS AttachObject action,
@@ -474,6 +471,10 @@ Detach
 
    ros2 service call /attach_detach_command dsr_cumotion_msgs/srv/PickPlace "{motion_type: 1}"
 
+.. raw:: html
+
+   <br>
+   <br>
 
 Obstacle Manager
 -----------------
@@ -507,12 +508,14 @@ In addition, the node subscribes to the ``/collision_remove`` topic, allowing:
 This enables dynamic environment updates during runtime while maintaining a consistent planning scene
 for cuMotion and MoveIt 2.
 
+
 Usage
 ~~~~~~
 
 The default obstacle configuration file is: ``dsr_cumotion/config/obstacle.yaml``
 
 If ``frame_id`` is not explicitly specified, it is automatically set to: ``base_link``
+
 
 Example YAML Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -558,6 +561,7 @@ Remove all collision objects:
 
    ros2 topic pub /collision_remove std_msgs/msg/String "{data: ''}" --once
 
+
 Launch Integration
 ~~~~~~~~~~~~~~~~~~~
 
@@ -575,6 +579,11 @@ Example:
      mode:=virtual \
      host:=127.0.0.1 \
      obstacle:=true
+
+.. raw:: html
+
+   <br>
+   <br>
 
 Package Overview
 ----------------------
@@ -599,23 +608,6 @@ It connects the following components into a single execution pipeline:
 - Planning scene and static obstacle management
 
 
-Key Responsibilities
-^^^^^^^^^^^^^^^^^^^^
-
-- Provides the **main system launch entry point** (``start_cumotion.launch.py``)
-- Configures the **cuMotion and MoveIt 2 planning pipelines**
-- Manages **robot model integration**:
-
-  - URDF
-  - SRDF
-  - XRDF
-
-- Provides a **Pick-and-Place task execution server**
-- Manages **static obstacles using the Planning Scene**
-- Manages **workspace boundaries (workbound)**
-
-This package directly controls the **core motion planning and execution behavior of the robot**.
-
 .. raw:: html
 
    <br>
@@ -629,23 +621,14 @@ The ``dsr_cumotion_goal_interface`` package receives **high-level user commands*
 and acts as the **command gateway** that forwards them to the
 **MoveIt 2 + cuMotion execution pipeline**.
 
-
-Key Responsibilities
-^^^^^^^^^^^^^^^^^^^^
-
 - Subscribes to the ``/target_pose`` topic
+- Sends motion goals to the **MoveIt 2 Action Server**
 - Selects the appropriate execution strategy based on the command type:
 
   - Absolute pose motion
   - Joint-space motion
   - Named pose motion
   - Relative TCP motion
-
-- Sends motion goals to the **MoveIt 2 Action Server**
-- Monitors execution status and feedback
-- Executes commands sequentially using a **multi-command queue**
-
-This package serves as the **intermediate control layer between user commands and physical robot execution**.
 
 .. raw:: html
 
@@ -660,9 +643,6 @@ The ``dsr_cumotion_msgs`` package defines all **custom ROS 2 messages and servic
 used throughout the system for **motion-level and task-level control**.
 
 
-Key Responsibilities
-^^^^^^^^^^^^^^^^^^^^
-
 - Defines the **unified motion command message** that supports:
 
   - Absolute pose commands
@@ -670,11 +650,18 @@ Key Responsibilities
   - Named target commands
   - Relative TCP commands
 
+.. raw:: html
+
+   <br>
 
 - Defines the **Pick-and-Place task control service interface**, including:
 
   - Approach → attach → retreat sequence
   - Approach → detach → retreat sequence
+
+.. raw:: html
+
+   <br>
 
 
 - Provides the **standard API contract** between:
